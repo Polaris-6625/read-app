@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .wrapper {
+        height: 100vh;
+        overflow: hidden;
+        margin: 0 16px;
+      }
+
+      article {
+        columns: calc(100vw - 32px) 1;
+        column-gap: 16px;
+        height: 100%;
+        transition: 0.4s;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <article>
+        <h3>第一章: 我不是小说</h3>
+
+        <p id="xxxx">
+          小说真可爱，我要看小说，小说不给看，我就写小说，写小说不好写，我就看小说............
+        </p>
+        <!-- *1000 -->
+      </article>
+    </div>
+  </body>
+  <script>
+    for (let i = 0; i < 200; i++) {
+      document
+        .getElementById("xxxx")
+        .append(
+          (document.createElement("p").innerText =
+            "小说真可爱，我要看小说，小说不给看，我就写小说，写小说不好写，我就看小说............")
+        );
+    }
+    let i = 0;
+    let article = document.querySelector("article");
+
+    setInterval(() => {
+      let width = document.body.offsetWidth;
+      i++;
+      if (i > 3) i = 0;
+
+      article.style.transform = `translateX(-${(width - 16) * i}px)`;
+    }, 1000);
+  </script>
+</html>
